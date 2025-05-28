@@ -2,7 +2,7 @@ from PIL import Image
 import numpy as np
 from math import floor
 
-im = Image.open('landscape.png')
+im = Image.open('images/landscape.png')
 
 width, height = im.size
 pixels = im.load()
@@ -33,4 +33,4 @@ except IndexError:
     final = Image.fromarray(newimg, mode='RGB')
 
 
-final.save("scaled.png")
+final.save("images/scaled.png")
