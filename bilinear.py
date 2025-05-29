@@ -46,7 +46,6 @@ for b in range(new_height):   #move vertically
                 if top_lerp == bottom_lerp:
                     final_lerp = top_lerp
                 else:
-                    print((b_l_pos, t_l_pos))
                     final_lerp = (((b_l_pos[1]-scaled_h)/(b_l_pos[1]-t_l_pos[1]))*top_lerp) + (((scaled_h - t_l_pos[1])/(b_l_pos[1]-t_l_pos[1]))*bottom_lerp)
                 final_pixel.append(round(final_lerp))
 
