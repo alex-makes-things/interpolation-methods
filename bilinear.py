@@ -2,7 +2,7 @@ from PIL import Image
 import numpy as np
 from math import floor
 
-im = Image.open('images/minilandscape.png')
+im = Image.open('images/landscape.png')
 
 width, height = im.size
 pixels = im.load()
@@ -38,19 +38,20 @@ for b in range(new_height):   #move vertically
         for r in range(channels):
             if (t_l_pos == t_r_pos):
                 final_pixel.append(pixels[(t_r_pos)][r])
+            elif (b_l_pos == t_l_pos):    #"Division by zero error" fixed
+                final_pixel.append(pixels[(b_l_pos)][r])
             else:
                 top_lerp = (((t_r_pos[0]-scaled_w)/(t_r_pos[0]-t_l_pos[0]))*t_l_pix[r]) + (((scaled_w-t_l_pos[0])/(t_r_pos[0]-t_l_pos[0]))*t_r_pix[r])
                 bottom_lerp = (((t_r_pos[0]-scaled_w)/(t_r_pos[0]-t_l_pos[0]))*b_l_pix[r]) + (((scaled_w-t_l_pos[0])/(t_r_pos[0]-t_l_pos[0]))*b_r_pix[r])
                 if top_lerp == bottom_lerp:
                     final_lerp = top_lerp
                 else:
-                    print((b*i), (b_l_pos[1], t_l_pos[1]))
+                    print((b_l_pos, t_l_pos))
                     final_lerp = (((b_l_pos[1]-scaled_h)/(b_l_pos[1]-t_l_pos[1]))*top_lerp) + (((scaled_h - t_l_pos[1])/(b_l_pos[1]-t_l_pos[1]))*bottom_lerp)
                 final_pixel.append(round(final_lerp))
 
         final_pixel = tuple(final_pixel)
         newpixels.append(final_pixel)
-
 
         
 
