@@ -2,11 +2,11 @@ from PIL import Image
 import numpy as np
 from math import floor
 
-im = Image.open('images/landscape.png')
+im = Image.open('images/nicerlandscape.png')
 
 width, height = im.size
 pixels = im.load()
-scaling_factor = 1.3  #can be any integer or decimal even between 0 and 1
+scaling_factor = 0.5  #can be any integer or decimal even between 0 and 1
 
 newpixels = []
 try:
